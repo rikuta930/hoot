@@ -37,7 +37,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     <header class="header">
       <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
       <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
-      <a href="signin.html" class="header__signout">ログアウト</a>
+      <a href="logout.php" class="header__signout">ログアウト</a>
     </header>
     <div class="main-container">
       <div class="profile">
