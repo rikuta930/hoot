@@ -1,0 +1,37 @@
+@import './variables';
+
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  background-color: $bgColor;
+  color: $mainFont;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+  z-index: 200;
+
+  &__logo {
+    position: absolute;
+    left: 10px;
+    width: 90px;
+    margin: auto;
+  }
+  &__search {
+    position: absolute;
+    right: 15px;
+    height: 25px;
+  }
+  &__signout {
+    position: absolute;
+    padding: 8px 0 8px 10px;
+    right: 10px;
+    font-size: 12px;
+    letter-spacing: -0.8px;
+    color: $mainFont;
+    text-decoration: none;
+    border-left: solid 1px $border;
+  }
+}

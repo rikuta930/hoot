@@ -1,0 +1,58 @@
+@import './variables';
+
+.main-container {
+  margin: 0 auto;
+  padding-top: 90px;
+  width: 80%;
+  // text-align: center;
+}
+
+.title {
+  margin-bottom: 22px;
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+}
+
+.form {
+  &__title {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  &__info {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 4px 8px;
+    outline: none;
+    border: 1px solid $border;
+    border-radius: 0;
+  }
+
+  &__btn-wrapper {
+    margin-top: 20px;
+    text-align: right;
+  }
+  &__btn {
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-radius: 2px;
+    font-size: 18px;
+    color: white;
+    background-color: $mainPurple;
+  }
+  &__signup {
+    margin-right: 3px;
+    color: $pointPurple;
+    font-size: 15px;
+    text-decoration: none;
+  }
+}
+
+
+textarea.form__info {
+  height: 100px;
+}

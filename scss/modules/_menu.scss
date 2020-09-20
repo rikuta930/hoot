@@ -1,0 +1,56 @@
+@import './variables';
+
+.menu-left {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-top-right-radius: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $btnPurple;
+  &:focus {
+    outline: none;
+  }
+
+  & .home {
+    position: absolute;
+    bottom: 39%;
+    left: 44%;
+    width: 53%;
+    transform: translate(-50%, 50%);
+  }
+  & .timeline {
+    position: absolute;
+    bottom: 38%;
+    left: 43%;
+    width: 45%;
+    transform: translate(-50%, 50%);
+  }
+}
+
+.menu-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-top-left-radius: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $btnPurple;
+  &:focus {
+    outline: none;
+  }
+  
+  & .mic {
+    position: absolute;
+    bottom: 41%;
+    left: 61%;
+    height: 50%;
+    transform: translate(-50%, 50%);
+  }
+}

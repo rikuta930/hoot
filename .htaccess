@@ -1,0 +1,5 @@
+#本番環境
+#SetEnv APP_ENV 'production'
+
+#開発環境
+SetEnv APP_ENV 'develop'

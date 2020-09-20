@@ -1,0 +1,76 @@
+@import './modules/variables';
+@import './modules/default-style';
+@import './modules/header';
+@import './modules/form';
+
+.main-container {
+  padding-top: 80px;
+}
+
+.page-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.record {
+  margin-bottom: 45px;
+
+  &__btn {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    & > button {
+      padding: 0;
+      width: 110px;
+      height: 35px;
+      border-radius: 2px;
+      font-size: 18px;
+    }
+  }
+
+  &__start {
+    color: white;
+    background-color: $mainPurple;
+    border: 0;
+  }
+  &__stop {
+    color: $pointPurple;
+    background-color: white;
+    border: 1px solid $border;
+  }
+
+  & > audio {
+    width: 100%;
+  }
+}
+
+.form {
+  &__btn-wrapper {
+    margin-top: 0;
+  }
+  &__btn {
+    margin-bottom: 20px;
+    width: 70px;
+    background-color: $pointPurple;
+  }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+  & > img {
+    width: 100%;
+  }
+}

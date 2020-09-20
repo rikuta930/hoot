@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Record</title>
+  <link rel="stylesheet" href="./css/reboot.min.css" />
+  <link rel="stylesheet" href="./css/record.css" />
+</head>
+<body>
+<div class="global-container">
+  <header class="header">
+    <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo" />
+    <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
+    <!-- <a href="signin.html" class="header__signout">ログアウト</a> -->
+  </header>
+  <div class="main-container">
+    <h2 class="page-title">つぶやき</h2>
+    <div class="record">
+      <div class="record__start">
+        <img src="./icon/talking.png" alt="record image">
+        <button>録音</button>
+      </div>
+      <div class="record__stop">
+        <img src="./icon/not_talking.png" alt="record image">
+        <button>停止</button>
+      </div>
+    </div>
+    <h2 class="page-title">ハッシュタグ</h2>
+    <label for="age" class="form__title">年代</label>
+    <select name="age" class="form__info">
+      <option value=""></option>
+      <option value="10">10代</option>
+      <option value="20">20代</option>
+      <option value="30">30代</option>
+      <option value="40">40代</option>
+      <option value="50">50代</option>
+      <option value="60">60代</option>
+      <option value="70">70代</option>
+      <option value="80">80代</option>
+      <option value="90">90代</option>
+    </select><br>
+    <label for="gender" class="form__title">性別</label>
+    <select name="gender" class="form__info">
+      <option value=""></option>
+      <option value="boy">男性</option>
+      <option value="girl">女性</option>
+      <option value="others">その他</option>
+      <option value="secret">無回答</option>
+    </select><br>
+    <label for="free-word" class="form__title">フリーワード</label>
+    <textarea name="free-word" class="form__info" placeholder="#嬉しい"></textarea>
+    <div class="form__btn-wrapper">
+      <button class="form__btn">公開</button>
+      </div__btn-wrapper>
+      </form>
+    </div>
+    <button class="back-btn" onclick="history.back()">
+      <img src="./icon/arrow.png" alt="arrow image">
+    </button>
+  </div>
+</body>
+</html>

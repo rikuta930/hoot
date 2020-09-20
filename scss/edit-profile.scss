@@ -1,0 +1,80 @@
+@import './modules/variables';
+@import './modules/default-style';
+@import './modules/header';
+@import './modules/form';
+
+.main-container {
+  padding-top: 70px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile {
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__icon {
+    width: 35%;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &__mail-and-id {
+    position: relative;
+    
+    & > span {
+      display: block;
+      color: $subFont;
+      font-size: 15px;
+    }
+  }
+
+  &__mail {
+    position: absolute;
+    bottom: 18px;
+    right: 0;
+  }
+
+  &__id {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.form {
+  &__btn-wrapper {
+    margin-top: 0;
+  }
+  &__btn {
+    width: 70px;
+    background-color: $pointPurple;
+  }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+  & > img {
+    width: 100%;
+  }
+}
