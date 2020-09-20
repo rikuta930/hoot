@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     ));
     $member = $members->fetch();
 
-    $sth = $dbh->prepare('SELECT * FROM hoot_sound WHERE user_id=?');
+    $sth = $dbh->prepare('SELECT * FROM hoot_sound WHERE user_id=? ORDER BY time DESC');
     $sth->execute(array(
         $_SESSION['id'],
     ));
