@@ -1,0 +1,7 @@
+config/settings_develop.php
+config/settings_production.php
+css/
+dist/
+.idea/
+.vscode/
+.DS_Store
