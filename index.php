@@ -6,10 +6,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $_SESSION['time'] = time();
 
     $members = $dbh->prepare('SELECT * FROM hoot_user WHERE id=?');
-    $members->execute(array(
-        $_SESSION['id']
-    ));
-    $member = $members->fetch();
+    $sql = 'SELECT * FROM hoot_sound WHERE listen=0';
 } else {
     header('Location: signin.php');
     exit();
@@ -32,117 +29,28 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
       <!-- <a href="#" class="header__signout">ログアウト</a> -->
     </header>
     <div class="main-container">
-      <ul class="list">
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_girl.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            Hana
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#女性</span>
-            <span class="list-item__tag">#嬉しい</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_black.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_boy.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            Taro
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#男性</span>
-            <span class="list-item__tag">#悲しい</span>
-            <span class="list-item__tag">#泣</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_purple.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_secret.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            豆腐
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#嬉しい</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_purple.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_girl.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            Hana
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#女性</span>
-            <span class="list-item__tag">#嬉しい</span>
-            <span class="list-item__tag">#嬉しい</span>
-            <span class="list-item__tag">#嬉しい</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_black.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_secret.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            豆腐
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#嬉しい</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_black.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-        <li class="list-item">
-          <div class="list-item__icon">
-            <img src="./icon/icon_others.png" alt="icon img">
-          </div>
-          <div class="list-item__info">
-            <h4 class="list-item__name">
-            おでん
-            </h4>
-            <audio src="#" controls></audio>
-            <span class="list-item__tag">#楽しい</span>
-            <span class="list-item__tag">#最高</span>
-            <span class="list-item__tag">#20代</span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_purple.png" alt="ear img">
-            </div>
-          </div>
-        </li>
-      </ul>
+      <div class="owl">
+        <ul class="owl__list">
+            <?php foreach($dbh->query($sql) as $row):?>
+          <li class="owl__item">
+            <a href="detail.php?hoot_sound_id=<?php print($row['id']);?>&user_id=<?php print($row['user_id']);?>">
+              <img src="./icon/<?php
+              $members->execute(array(
+                  $row['user_id'],
+              ));
+              $member = $members->fetch();
+              print($member['picture']);
+              ?>" alt="owl image">
+            </a>
+          </li>
+            <?php endforeach;?>
+        </ul>
+      </div>
     </div>
     <button class="menu-left" onclick="location.href='mypage.php'">
       <img class="home" src="./icon/home.png" alt="home img">
     </button>
-    <!-- <button class="menu-left" onclick="location.href='index.html'">
+    <!-- <button class="menu-left" onclick="location.href='index.php'">
       <img class="timeline" src="./icon/timeline.png" alt="timeline img">
     </button> -->
     <button class="menu-right" onclick="location.href='record.php'">
