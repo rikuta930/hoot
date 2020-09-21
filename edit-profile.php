@@ -1,3 +1,32 @@
+<?php
+session_start();
+require('./pdo_connect.php');
+
+if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
+    $_SESSION['time'] = time();
+
+    $members = $dbh->prepare('SELECT * FROM hoot_user WHERE id=?');
+    $members->execute(array(
+        $_SESSION['id']
+    ));
+    $member = $members->fetch();
+    var_dump($_POST);
+
+    if (!empty($_POST)) {
+        $sth = $dbh->prepare('UPDATE hoot_user SET name = ?, gender =? WHERE id=?');
+        $sth->execute(array(
+                $_POST['name'],
+                $_POST['gender'],
+                $_SESSION['id'],
+        ));
+        }else {
+        $error['empty'] = 'empty';
+    }
+} else {
+    header('Location: signin.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,29 +51,29 @@
           </div>
           <div class="profile__mail-and-id">
             <span class="profile__mail">
-              aaaaaa@sample.com
+              <?php print($member['email']);?>
             </span>
             <span class="profile__id">
-              aaaaaa
+              id:<?php print($member['id']);?>
             </span>
           </div>
         </div>
-        <form class="form">
+        <form class="form" action="edit-profile.php" method="post">
           <label for="name" class="form__title">ユーザー名</label>
-            <input id="name" type="text" class="form__info"><br>
+            <input id="name" type="text" name="name" class="form__info" placeholder="<?php print($member['name']);?>" required><br>
           <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info">
+            <select name="gender" class="form__info" required>
               <option value=""></option>
               <option value="boy">男性</option>
               <option value="girl">女性</option>
               <option value="others">その他</option>
               <option value="secret">無回答</option>
             </select><br>
-          <label for="introduction" class="form__title">自己紹介</label>
-          <textarea name="introduction" class="form__info"></textarea>
+<!--          <label for="introduction" class="form__title">自己紹介</label>-->
+<!--          <textarea name="introduction" class="form__info"></textarea>-->
           <div class="form__btn-wrapper">
-            <button class="form__btn">変更</button>
-          </div__btn-wrapper>
+            <button class="form__btn" type="submit">変更</button>
+          </div>
         </form>
       </div>
       <button class="back-btn" onclick="history.back()">

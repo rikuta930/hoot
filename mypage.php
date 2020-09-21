@@ -1,7 +1,6 @@
 <?php
 session_start();
 require('./pdo_connect.php');
-
 if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $_SESSION['time'] = time();
 
@@ -37,7 +36,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     <header class="header">
       <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
       <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
-      <a href="signin.html" class="header__signout">ログアウト</a>
+      <a href="logout.php" class="header__signout">ログアウト</a>
     </header>
     <div class="main-container">
       <div class="profile">
@@ -60,7 +59,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
           <h4 class="profile__name"><?php print($member['name']);?></h4>
           <p class="profile__id"><?php print($member['id']);?></p>
           <p class="profile__introduction">こんにちは。ここには自己紹介が表示されます。よろしくね！</p>
-          <button class="profile__btn" onclick="location.href='edit-profile.html'">プロフィール編集</button>
+          <button class="profile__btn" onclick="location.href='edit-profile.php'">プロフィール編集</button>
         </div>
       </div>
       <ul class="list">
