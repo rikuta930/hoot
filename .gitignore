@@ -1,6 +1,7 @@
 config/settings_develop.php
 config/settings_production.php
-css/
+css/*
+!css/reboot.min.css
 dist/
 .idea/
 .vscode/
