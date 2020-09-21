@@ -9,13 +9,15 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
   $result=@move_uploaded_file($_FILES["sound"]["tmp_name"], $filename);
 
   #データベースに登録
+  $listen = 0;
   $file = $_POST['fname']. '.wav';
   $time = date('Y-m-d H:i:s');
-  $sound = $dbh->prepare('INSERT INTO hoot_sound(name, time, user_id) VALUES(?, ?, ?)');
+  $sound = $dbh->prepare('INSERT INTO hoot_sound(name, time, user_id,listen) VALUES(?, ?, ?, ?)');
   $sound->execute(array(
       $file,
       $time,
       $_SESSION['id'],
+      $listen,
   ));
 } else {
   header('Location: signin.php');

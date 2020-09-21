@@ -76,7 +76,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
           </div>
         </form>
       </div>
-      <button class="back-btn" onclick="history.back()">
+      <button class="back-btn" onclick="location.href='mypage.php'">
         <img src="./icon/arrow.png" alt="arrow image">
       </button>
     </div>
