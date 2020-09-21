@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
       <div class="profile">
         <div class="profile__left">
           <div class="profile__icon">
-            <img src="./icon/icon_girl.png" alt="icon img">
+            <img src="./icon/<?php print($member['picture']);?>" alt="icon img">
           </div>
           <div class="profile__follow-and-follower">
             <div>
@@ -72,7 +72,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
           ?>
         <li class="list-item">
           <div class="list-item__icon">
-            <img src="./icon/icon_girl.png" alt="icon img">
+            <img src="./icon/<?php print($member['picture']);?>" alt="icon img">
           </div>
           <div class="list-item__info">
             <h2 class="list-item__name">
@@ -81,10 +81,10 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
             <audio src="./recup/data/<?php echo $datum['name'];?>" controls></audio>
             <span class="list-item__tag">#<?php echo $hashtag['gender']?> </span>
             <span class="list-item__tag"><?php echo $hashtag['freeword'] ?></span>
-            <div class="list-item__heard">
-              <span class="list-item__number">17</span>
-              <img src="./icon/ear_black.png" alt="ear img">
-            </div>
+<!--            <div class="list-item__heard">-->
+<!--              <span class="list-item__number">17</span>-->
+<!--              <img src="./icon/ear_black.png" alt="ear img">-->
+<!--            </div>-->
           </div>
         </li>
           <?php endforeach; ?>

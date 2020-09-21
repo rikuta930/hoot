@@ -1,7 +1,7 @@
+.gitignore
 config/settings_develop.php
 config/settings_production.php
-css/*
-!css/reboot.min.css
+css/
 dist/
 .idea/
 .vscode/

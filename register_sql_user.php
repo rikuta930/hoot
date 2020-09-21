@@ -7,13 +7,14 @@ if (!isset($_SESSION['join'])) {
     exit();
 }
 
-$statement = $dbh->prepare('INSERT INTO hoot_user(name, gender, email, password) VALUES(?, ?, ?, ?)');
+$statement = $dbh->prepare('INSERT INTO hoot_user(name, gender, email, password, picture) VALUES(?, ?, ?, ?, ?)');
 
 $statement->execute(array(
     $_SESSION['join']['name'],
     $_SESSION['join']['gender'],
     $_SESSION['join']['email'],
     sha1($_SESSION['join']['password']),
+    'owl_green.svg'
 ));
 unset($_SESSION['join']);
 
