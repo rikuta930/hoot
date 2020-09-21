@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         <h2 class="page-title">プロフィール編集</h2>
         <div class="profile__info">
           <div class="profile__icon">
-            <img src="./icon/icon_girl.png" alt="icon image">
+            <img src="./icon/<?php print($member['picture']);?>" alt="icon image">
           </div>
           <div class="profile__mail-and-id">
             <span class="profile__mail">
