@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="./css/reboot.min.css">
+  <link rel="stylesheet" href="./css/signup.css">
+</head>
+<body>
+  <div class="global-container">
+    <header class="header">
+      <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
+      <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
+      <!-- <a href="#" class="header__signout">ログアウト</a> -->
+    </header>
+    <div class="main-container">
+      <h1 class="title">新規登録</h1>
+      <form class="form">
+        <label for="name" class="form__title">ユーザー名</label>
+          <input id="name" type="text" class="form__info"><br>
+        <label for="gender" class="form__title">性別</label>
+          <select name="gender" class="form__info">
+            <option value=""></option>
+            <option value="boy">男性</option>
+            <option value="girl">女性</option>
+            <option value="others">その他</option>
+            <option value="secret">無回答</option>
+          </select><br>
+        <label for="mail" class="form__title">メールアドレス</label>
+          <input id="mail" type="email" class="form__info"><br>
+        <label for="pw" class="form__title">パスワード</label>
+          <input id="pw" type="password" class="form__info"><br>
+        <label for="pw" class="form__title">パスワード(確認用)</label>
+          <input id="pw" type="password" class="form__info"><br>
+        <div class="form__btn-wrapper">
+          <button class="form__btn">登録</button>
+          <!-- <a href="signup.html" class="form__signup">新規登録</a> -->
+        </div__btn-wrapper>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
