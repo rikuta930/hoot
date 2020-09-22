@@ -26,6 +26,14 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         $hoot_hashtag_id,
     ));
     $hashtag_data = $hashtags->fetch();
+
+    ##画像を表示
+    $members = $dbh->prepare('SELECT * FROM hoot_user WHERE id=?');
+    $members->execute(array(
+        $user_id,
+    ));
+    $member = $members->fetch();
+
     ##他のユーザーが再生できないようにする｡
     $change_sound = $dbh->prepare('update  hoot_sound set listen = 1 where id = ?');
     $change_sound->execute(array(
@@ -37,10 +45,24 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     exit();
 }
 ?>
-<audio src="recup/data/<?php print($filename);?>" controls></audio>
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./icon/<?php print($member['picture']);?>" alt="">
+    <p><?php print($member['name']);?></p>
+    <audio src="recup/data/<?php print($filename);?>" controls></audio>
     <div>
-    <?php print($hashtag_data['generation']);?>
-    <?php print($hashtag_data['gender']);?>
-    <?php print($hashtag_data['freeword']);?>
+        <?php print($hashtag_data['generation']);?>
+        <?php print($hashtag_data['gender']);?>
+        <?php print($hashtag_data['freeword']);?>
     </div>
-<a href="index.php">戻る</a>
+    <a href="index.php">戻る</a>
+</body>
+</html>
