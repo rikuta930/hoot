@@ -57,7 +57,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         </div>
         <div class="profile__right">
           <h4 class="profile__name"><?php print($member['name']);?></h4>
-          <p class="profile__id"><?php print($member['id']);?></p>
+          <p class="profile__id">id:<?php print($member['id']);?></p>
           <p class="profile__introduction">こんにちは。ここには自己紹介が表示されます。よろしくね！</p>
           <button class="profile__btn" onclick="location.href='edit-profile.php'">プロフィール編集</button>
         </div>
