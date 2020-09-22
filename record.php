@@ -27,9 +27,9 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 
             header('Location: index.php');
             exit();
-        } else {
-            $error['empty'] = 'empty';
         }
+    }else {
+        $error['empty'] = 'empty';
     }
 }else {
     header('Location: signin.php');
@@ -64,7 +64,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         <h2 class="page-title">ハッシュタグ</h2>
         <form action="record.php" method="post">
             <label for="generation" class="form__title">年代</label>
-            <select name="generation" class="form__info">
+            <select name="generation" class="form__info" required>
                 <option value=""></option>
                 <option value="10">10代</option>
                 <option value="20">20代</option>
@@ -77,7 +77,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
                 <option value="90">90代</option>
             </select><br>
             <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info">
+            <select name="gender" class="form__info" required>
                 <option value=""></option>
                 <option value="boy">男性</option>
                 <option value="girl">女性</option>
@@ -85,10 +85,10 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
                 <option value="secret">無回答</option>
             </select><br>
             <label for="freeword" class="form__title">フリーワード</label>
-            <textarea name="freeword" class="form__info" placeholder="#嬉しい"></textarea>
+            <textarea name="freeword" class="form__info" placeholder="#嬉しい" required></textarea>
 
             <?php if ($error['empty'] === 'empty') : ?>
-                <p>すべての空欄を埋めてください｡</p>
+                <p>録音停止後､すべての空欄を埋めてください｡</p>
             <?php endif; ?>
 
             <div class="form__btn-wrapper">
