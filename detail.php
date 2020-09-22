@@ -34,35 +34,46 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     ));
     $member = $members->fetch();
 
-    ##他のユーザーが再生できないようにする｡
-    $change_sound = $dbh->prepare('update  hoot_sound set listen = 1 where id = ?');
-    $change_sound->execute(array(
-        $hoot_sound_id,
-    ));
+//    ##他のユーザーが再生できないようにする｡
+//    $change_sound = $dbh->prepare('update  hoot_sound set listen = 1 where id = ?');
+//    $change_sound->execute(array(
+//        $hoot_sound_id,
+//    ));
 
 } else {
     header('Location: signin.php');
     exit();
 }
 ?>
-<!doctype html>
-<html lang="ja">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Page</title>
+    <link rel="stylesheet" href="./css/reboot.min.css" />
+    <link rel="stylesheet" href="./css/detail.css" />
 </head>
 <body>
-    <img src="./icon/<?php print($member['picture']);?>" alt="">
-    <p><?php print($member['name']);?></p>
-    <audio src="recup/data/<?php print($filename);?>" controls></audio>
-    <div>
-        #<?php print($hashtag_data['generation']);?>代
-        #<?php print($hashtag_data['gender']);?>
-        <?php print($hashtag_data['freeword']);?>
+<div class="global-container">
+    <header class="header">
+        <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo" />
+        <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
+        <!-- <a href="#" class="header__signout">ログアウト</a> -->
+    </header>
+    <div class="main-container">
+        <div class="user-icon">
+            <img src="./icon/bubble_sos.svg" alt="bubble image" class="bubble">
+            <img src="./icon/<?php print($member['picture']);?>_sitting.svg" alt="owl image" class="sitting-owl">
+        </div>
+        <div class="details">
+            <audio src="recup/data/<?php print($filename);?>" controlslist="nodownload" controls></audio>
+        </div>
     </div>
-    <a href="index.php">戻る</a>
+    <button class="back-btn" onclick="location.href='index.php'">
+        <img src="./icon/arrow.png" alt="arrow image" />
+    </button>
+</div>
 </body>
 </html>

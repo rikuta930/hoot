@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
       <div class="profile">
         <div class="profile__left">
           <div class="profile__icon">
-            <img src="./icon/<?php print($member['picture']);?>" alt="icon img">
+            <img src="./icon/<?php print($member['picture']);?>.svg" alt="icon img">
           </div>
           <div class="profile__follow-and-follower">
             <div>

@@ -41,7 +41,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
               ));
               $member = $members->fetch();
               print($member['picture']);
-              ?>" alt="owl image" class="owl">
+              ?>.svg" alt="owl image" class="owl">
             </a>
           </li>
             <?php endforeach;?>
