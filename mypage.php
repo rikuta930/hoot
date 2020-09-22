@@ -46,19 +46,19 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
           </div>
           <div class="profile__follow-and-follower">
             <div>
-              <span class="label">フォロー</span>
-              <span class="number">10</span>
+<!--              <span class="label">フォロー</span>-->
+<!--              <span class="number">10</span>-->
             </div>
             <div>
-              <span class="label">フォロワー</span>
-              <span class="number">10</span>
+<!--              <span class="label">フォロワー</span>-->
+<!--              <span class="number">10</span>-->
             </div>
           </div>
         </div>
         <div class="profile__right">
           <h4 class="profile__name"><?php print($member['name']);?></h4>
           <p class="profile__id">id:<?php print($member['id']);?></p>
-          <p class="profile__introduction">こんにちは。ここには自己紹介が表示されます。よろしくね！</p>
+<!--          <p class="profile__introduction">こんにちは。ここには自己紹介が表示されます。よろしくね！</p>-->
           <button class="profile__btn" onclick="location.href='edit-profile.php'">プロフィール編集</button>
         </div>
       </div>
@@ -72,7 +72,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
           ?>
         <li class="list-item">
           <div class="list-item__icon">
-            <img src="./icon/<?php print($member['picture']);?>" alt="icon img">
+<!--            <img src="./icon/--><?php //print($member['picture']);?><!--" alt="icon img">-->
           </div>
           <div class="list-item__info">
             <h2 class="list-item__name">

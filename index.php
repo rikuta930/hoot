@@ -6,7 +6,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $_SESSION['time'] = time();
 
     $members = $dbh->prepare('SELECT * FROM hoot_user WHERE id=?');
-    $sql = 'SELECT * FROM hoot_sound WHERE listen=0';
+    $sql = 'SELECT * FROM hoot_sound WHERE listen=0 order by time limit 5';
 } else {
     header('Location: signin.php');
     exit();
