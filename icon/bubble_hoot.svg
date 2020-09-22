@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80.934" height="75.84" viewBox="0 0 80.934 75.84">
+  <g id="グループ_50" data-name="グループ 50" transform="translate(-78 -12)">
+    <path id="Icon_metro-bubble" data-name="Icon metro-bubble" d="M43.038,3.856c-22.349,0-40.467,14.721-40.467,32.879S20.688,69.615,43.038,69.615a49.978,49.978,0,0,0,6.309-.4c8.692,8.692,19.068,10.251,29.1,10.48V77.569c-5.417-2.654-10.117-7.488-10.117-13.012a15.265,15.265,0,0,1,.171-2.268c9.152-6.028,15-15.235,15-25.553,0-18.159-18.118-32.879-40.467-32.879Z" transform="translate(75.429 8.144)" fill="#898ca8"/>
+    <text id="Hoot" transform="translate(97.538 52.866)" fill="#fff" font-size="17" font-family="ArialRoundedMTBold, Arial Rounded MT Bold"><tspan x="0" y="0">Hoot</tspan></text>
+  </g>
+</svg>
