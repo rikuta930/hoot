@@ -25,14 +25,15 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
   <div class="global-container">
     <header class="header">
       <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
-      <img src="./icon/search.png" alt="search img" class="header__search">
+      <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
       <!-- <a href="#" class="header__signout">ログアウト</a> -->
     </header>
     <div class="main-container">
-      <div class="owl">
-        <ul class="owl__list">
+      <div class="timeline">
+        <ul class="timeline__list">
             <?php foreach($dbh->query($sql) as $row):?>
-          <li class="owl__item">
+          <li class="timeline__item">
+            <img src="./icon/bubble_myself.svg" alt="bubble image" class="bubble">
             <a href="detail.php?hoot_sound_id=<?php print($row['id']);?>&user_id=<?php print($row['user_id']);?>">
               <img src="./icon/<?php
               $members->execute(array(
@@ -40,7 +41,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
               ));
               $member = $members->fetch();
               print($member['picture']);
-              ?>" alt="owl image">
+              ?>" alt="owl image" class="owl">
             </a>
           </li>
             <?php endforeach;?>
