@@ -14,7 +14,7 @@ $statement->execute(array(
     $_SESSION['join']['gender'],
     $_SESSION['join']['email'],
     sha1($_SESSION['join']['password']),
-    'owl_green.svg'
+    'owl_green'
 ));
 unset($_SESSION['join']);
 

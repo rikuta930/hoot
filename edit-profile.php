@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     ));
     $member = $members->fetch();
 
-    $icon = 'owl_'. $_POST['color'] . '.svg';
+    $icon = 'owl_'. $_POST['color'];
     if (!empty($_POST)) {
         $sth = $dbh->prepare('UPDATE hoot_user SET name = ?, gender =?, picture=? WHERE id=?');
         $sth->execute(array(
@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         <h2 class="page-title">プロフィール編集</h2>
         <div class="profile__info">
             <div class="profile__icon">
-                <img src="./icon/<?php print($member['picture']); ?>" alt="icon image">
+                <img src="./icon/<?php print($member['picture']); ?>.svg" alt="icon image">
             </div>
             <div class="profile__mail-and-id">
             <span class="profile__mail">
