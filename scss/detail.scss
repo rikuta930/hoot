@@ -1,0 +1,54 @@
+@import './modules/variables';
+@import './modules/default-style';
+@import './modules/header';
+
+
+.main-container {
+  padding-top: 80px;
+}
+
+.user-icon {
+  margin-bottom: 60px;
+  padding-top: 20px;
+  text-align: right;
+  position: relative;
+  
+  & > .bubble {
+    display: block;
+    position: absolute;
+    right: 170px;
+    top: 0;
+    width: 70px;
+  }
+
+  & > .sitting-owl {
+      width: 250px;
+  }
+}
+
+.details {
+  margin: 0 auto;
+  width: 80%;
+
+  & > audio {
+    width: 100%;
+  }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+  & > img {
+    width: 100%;
+  }
+}
