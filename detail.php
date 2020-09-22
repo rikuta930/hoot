@@ -59,8 +59,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     <p><?php print($member['name']);?></p>
     <audio src="recup/data/<?php print($filename);?>" controls></audio>
     <div>
-        <?php print($hashtag_data['generation']);?>
-        <?php print($hashtag_data['gender']);?>
+        #<?php print($hashtag_data['generation']);?>代
+        #<?php print($hashtag_data['gender']);?>
         <?php print($hashtag_data['freeword']);?>
     </div>
     <a href="index.php">戻る</a>
