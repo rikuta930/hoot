@@ -10,16 +10,18 @@
   background-size: auto;
 }
 
-.owl {
+.timeline {
   &__list {
     margin: 0;
-    padding-top: 135px;
+    padding-top: 110px;
     padding-bottom: 50px;
   }
 
   &__item {
+    position: relative;
     margin-right: 127px;
-    margin-bottom: 97px;
+    margin-bottom: 72px;
+    padding-top: 25px;
     list-style: none;
     text-align: right;
 
@@ -27,7 +29,15 @@
       margin-bottom: 0;
     }
 
-    & img {
+    & .bubble {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100px;
+      width: 65px;
+    }
+
+    & .owl {
       width: 80px;
     }
   }
