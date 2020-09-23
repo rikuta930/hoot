@@ -32,7 +32,7 @@
 }
 
 .record {
-  margin-bottom: 30px;
+  margin-bottom: 23px;
 
   &__btn {
     display: flex;
@@ -73,7 +73,7 @@
 
 .form {
   &__info {
-    margin-bottom: 60px;
+    margin-bottom: 63px;
   }
 
   &__btn-wrapper {
@@ -81,7 +81,9 @@
   }
   &__btn {
     margin-bottom: 20px;
-    width: 85px;
+    width: 110px;
+    height: 35px;
+    font-size: 18px;
     background-color: $pointPurple;
   }
 }
