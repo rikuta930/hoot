@@ -18,34 +18,37 @@
         <h2 class="page-title">プロフィール編集</h2>
         <div class="profile__info">
           <div class="profile__icon">
-            <img src="./icon/icon_girl.png" alt="icon image">
+            <img src="./icon/owl_pink.svg" alt="icon image">
           </div>
           <div class="profile__mail-and-id">
-            <span class="profile__mail">
+            <!-- <span class="profile__mail">
               aaaaaa@sample.com
             </span>
             <span class="profile__id">
-              aaaaaa
+              aaaaaa -->
             </span>
           </div>
         </div>
         <form class="form">
-          <label for="name" class="form__title">ユーザー名</label>
-            <input id="name" type="text" class="form__info"><br>
-          <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info">
-              <option value=""></option>
-              <option value="boy">男性</option>
-              <option value="girl">女性</option>
-              <option value="others">その他</option>
-              <option value="secret">無回答</option>
-            </select><br>
-          <label for="introduction" class="form__title">自己紹介</label>
-          <textarea name="introduction" class="form__info"></textarea>
-          <div class="form__btn-wrapper">
-            <button class="form__btn">変更</button>
-          </div__btn-wrapper>
-        </form>
+        <label for="owl-color" class="form__title">アイコンカラー</label>
+          <select name="owl-color" class="form__info">
+            <option value=""></option>
+            <option value="owl_blue">ブルー</option>
+            <option value="owl_pink">ピンク</option>
+            <option value="owl_orange">オレンジ</option>
+            <option value="owl_green">グリーン</option>
+          </select><br>
+        <label for="mail" class="form__title">メールアドレス</label>
+          <input id="mail" type="email" class="form__info"><br>
+        <label for="pw" class="form__title">パスワード</label>
+          <input id="pw" type="password" class="form__info"><br>
+        <label for="re-pw" class="form__title">パスワード(確認用)</label>
+          <input id="re-pw" type="password" class="form__info"><br>
+        <div class="form__btn-wrapper">
+          <button class="form__btn">変更</button>
+          <!-- <a href="signup.html" class="form__signup">新規登録</a> -->
+        </div__btn-wrapper>
+      </form>
       </div>
       <button class="back-btn" onclick="history.back()">
         <img src="./icon/arrow.png" alt="arrow image">
