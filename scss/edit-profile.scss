@@ -8,7 +8,8 @@
 }
 
 .page-title {
-  font-size: 20px;
+  margin-bottom: 20px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -16,8 +17,7 @@
   &__info {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   &__icon {
@@ -28,32 +28,33 @@
     }
   }
 
-  &__mail-and-id {
-    position: relative;
+  // &__mail-and-id {
+  //   position: relative;
     
-    & > span {
-      display: block;
-      color: $subFont;
-      font-size: 15px;
-    }
-  }
+  //   & > span {
+  //     display: block;
+  //     color: $subFont;
+  //     font-size: 15px;
+  //   }
+  // }
 
-  &__mail {
-    position: absolute;
-    bottom: 18px;
-    right: 0;
-  }
+  // &__mail {
+  //   position: absolute;
+  //   bottom: 18px;
+  //   right: 0;
+  // }
 
-  &__id {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
+  // &__id {
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0;
+  // }
 }
 
 .form {
   &__btn-wrapper {
-    margin-top: 0;
+    margin-top: 20px;
+    padding-bottom: 20px;
   }
   &__btn {
     width: 70px;
