@@ -11,13 +11,12 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     ));
     $member = $members->fetch();
 
-    $icon = 'owl_'. $_POST['color'];
     if (!empty($_POST)) {
-        $sth = $dbh->prepare('UPDATE hoot_user SET name = ?, gender =?, picture=? WHERE id=?');
+        $sth = $dbh->prepare('UPDATE hoot_user SET email=?, password=?, picture=? WHERE id=?');
         $sth->execute(array(
-            $_POST['name'],
-            $_POST['gender'],
-            $icon,
+            $_POST['email'],
+            sha1($_POST['password']),
+            $_POST['owl_color'],
             $_SESSION['id'],
         ));
         header('Location: mypage.php');
@@ -53,37 +52,23 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
                 <img src="./icon/<?php print($member['picture']); ?>.svg" alt="icon image">
             </div>
             <div class="profile__mail-and-id">
-            <span class="profile__mail">
-              <?php print($member['email']); ?>
-            </span>
-                <span class="profile__id">
-              id:<?php print($member['id']); ?>
-            </span>
             </div>
         </div>
-        <form class="form" action="edit-profile.php" method="post">
-            <label for="name" class="form__title">ユーザー名</label>
-            <input id="name" type="text" name="name" class="form__info" placeholder="<?php print($member['name']); ?>"
-                   required><br>
-            <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info" required>
+        <form class="form" method="post">
+            <label for="owl-color" class="form__title">アイコンカラー</label>
+            <select name="owl_color" class="form__info">
                 <option value=""></option>
-                <option value="boy">男性</option>
-                <option value="girl">女性</option>
-                <option value="others">その他</option>
-                <option value="secret">無回答</option>
+                <option value="owl_blue">ブルー</option>
+                <option value="owl_pink">ピンク</option>
+                <option value="owl_orange">オレンジ</option>
+                <option value="owl_green">グリーン</option>
             </select><br>
-
-            <label for="color" class="form__title">アイコン</label>
-            <select name="color" class="form__info" required>
-                <option value=""></option>
-                <option value="blue">青</option>
-                <option value="green">緑</option>
-                <option value="orange">橙</option>
-                <option value="pink">桃</option>
-            </select><br>
-            <!--          <label for="introduction" class="form__title">自己紹介</label>-->
-            <!--          <textarea name="introduction" class="form__info"></textarea>-->
+            <label for="mail" class="form__title">メールアドレス</label>
+            <input id="mail" type="email" class="form__info" name="email"><br>
+            <label for="pw" class="form__title">パスワード</label>
+            <input id="pw" type="password" class="form__info" name="password"><br>
+            <label for="re-pw" class="form__title">パスワード(確認用)</label>
+            <input id="re-pw" type="password" class="form__info" name="password2"><br>
             <div class="form__btn-wrapper">
                 <button class="form__btn" type="submit">変更</button>
             </div>
