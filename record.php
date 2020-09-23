@@ -49,8 +49,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 <div class="global-container">
     <header class="header">
         <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo"/>
-        <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
-        <!-- <a href="signin.html" class="header__signout">ログアウト</a> -->
     </header>
     <div class="main-container">
         <h2 class="page-title">つぶやき</h2>
@@ -100,9 +98,6 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         <img src="./icon/arrow.png" alt="arrow image">
     </button>
 </div>
-<!--    <button onclick="startRecording(this);">録音</button>-->
-<!--    <button onclick="stopRecording(this);" disabled>停止</button>-->
-<!--    <ul id="recordingslist"></ul>-->
 <h2>Log</h2>
 <pre id="log"></pre>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

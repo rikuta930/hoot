@@ -34,11 +34,11 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     ));
     $member = $members->fetch();
 
-//    ##他のユーザーが再生できないようにする｡
-//    $change_sound = $dbh->prepare('update  hoot_sound set listen = 1 where id = ?');
-//    $change_sound->execute(array(
-//        $hoot_sound_id,
-//    ));
+    ##他のユーザーが再生できないようにする｡
+    $change_sound = $dbh->prepare('update  hoot_sound set listen = 1 where id = ?');
+    $change_sound->execute(array(
+        $hoot_sound_id,
+    ));
 
 } else {
     header('Location: signin.php');
