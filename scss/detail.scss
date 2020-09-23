@@ -2,13 +2,29 @@
 @import './modules/default-style';
 @import './modules/header';
 
+.global-container {
+  min-height: 100vh;
+  position: relative;
+
+  & > .report {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    
+    & > a {
+      color: $subFont;
+      text-decoration: underline;
+      font-size: 12px;
+    }
+  }
+}
 
 .main-container {
   padding-top: 80px;
 }
 
 .user-icon {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding-top: 20px;
   text-align: right;
   position: relative;
@@ -27,11 +43,38 @@
 }
 
 .details {
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   width: 80%;
 
   & > audio {
     width: 100%;
+  }
+}
+
+.response {
+  // display: flex;
+  // align-items: flex-end;
+
+  & > .my-icon {
+    & > .sitting-owl {
+      width: 200px;
+      transform: scale(-1, 1);
+    }
+  }
+
+  & > .btn {
+    text-align: right;
+    margin-right: 20px;
+
+    & > button {
+      width: 100px;
+      height: 30px;
+      border: 0;
+      border-radius: 2px;
+      font-size: 14px;
+      color: white;
+      background-color: $mainPurple;
+    }
   }
 }
 
