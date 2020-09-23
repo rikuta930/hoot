@@ -14,41 +14,30 @@
         <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
         <!-- <a href="signin.html" class="header__signout">ログアウト</a> -->
       </header>
+      <div class="user-icon">
+          <img src="./icon/bubble_hoot.svg" alt="bubble image" class="bubble">
+          <img src="./icon/owl_pink_sitting.svg" alt="owl image" class="sitting-owl">
+        </div>
       <div class="main-container">
-        <h2 class="page-title">つぶやき</h2>
         <div class="record">
           <div class="record__btn">
-            <button class="record__start">録音</button>
-            <button class="record__stop">停止</button>
+            <button class="record__start" ontouchstart="">録音</button>
+            <button class="record__stop" ontouchstart="">停止</button>
           </div>
-          <audio src="./audio/demo.mp3" controlslist="nodownload" controls></audio>
+          <audio src="#" controlslist="nodownload" controls></audio>
         </div>
-        <h2 class="page-title">ハッシュタグ</h2>
-          <label for="age" class="form__title">年代</label>
-            <select name="age" class="form__info">
-              <option value=""></option>
-              <option value="10">10代</option>
-              <option value="20">20代</option>
-              <option value="30">30代</option>
-              <option value="40">40代</option>
-              <option value="50">50代</option>
-              <option value="60">60代</option>
-              <option value="70">70代</option>
-              <option value="80">80代</option>
-              <option value="90">90代</option>
-            </select><br>
-          <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info">
-              <option value=""></option>
-              <option value="boy">男性</option>
-              <option value="girl">女性</option>
+        <form action="" class="form">
+          <!-- <label for="category" class="form__title">カテゴリ</label> -->
+            <select name="category" class="form__info">
+              <option value="">カテゴリ</option>
+              <option value="myself">独り言</option>
+              <option value="consult">相談</option>
+              <option value="song">song</option>
+              <option value="sos">SOS</option>
               <option value="others">その他</option>
-              <option value="secret">無回答</option>
             </select><br>
-          <label for="free-word" class="form__title">フリーワード</label>
-          <textarea name="free-word" class="form__info" placeholder="#嬉しい"></textarea>
           <div class="form__btn-wrapper">
-            <button class="form__btn">公開</button>
+            <button class="form__btn">飛ばす</button>
           </div__btn-wrapper>
         </form>
       </div>

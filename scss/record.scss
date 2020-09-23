@@ -3,18 +3,36 @@
 @import './modules/header';
 @import './modules/form';
 
-.main-container {
-  padding-top: 80px;
+.global-container {
+  padding-top: 70px;
 }
 
-.page-title {
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: bold;
+.main-container {
+  padding-top: 0;
+}
+
+.user-icon {
+  margin-bottom: 60px;
+  margin-right: 0;
+  padding-top: 55px;
+  text-align: right;
+  position: relative;
+  
+  & > .bubble {
+    display: block;
+    position: absolute;
+    right: 170px;
+    top: 0;
+    width: 110px;
+  }
+
+  & > .sitting-owl {
+      width: 250px;
+  }
 }
 
 .record {
-  margin-bottom: 45px;
+  margin-bottom: 30px;
 
   &__btn {
     display: flex;
@@ -27,6 +45,12 @@
       height: 35px;
       border-radius: 2px;
       font-size: 18px;
+      box-shadow: 3px 4px 2px 0px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        transform: translate(3px, 4px);
+        box-shadow: none;
+      }
     }
   }
 
@@ -34,6 +58,7 @@
     color: white;
     background-color: $mainPurple;
     border: 0;
+
   }
   &__stop {
     color: $pointPurple;
@@ -47,12 +72,16 @@
 }
 
 .form {
+  &__info {
+    margin-bottom: 60px;
+  }
+
   &__btn-wrapper {
     margin-top: 0;
   }
   &__btn {
     margin-bottom: 20px;
-    width: 70px;
+    width: 85px;
     background-color: $pointPurple;
   }
 }
