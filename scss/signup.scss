@@ -3,4 +3,20 @@
 @import './modules/header';
 @import './modules/form';
 
+.global-container {
+  padding-top: 70px;
+}
 
+.main-container {
+  padding-top: 0;
+}
+
+.main-logo {
+  width: 90%;
+  margin-left: auto;
+  margin-bottom: 20px;
+
+  & > img {
+    width: 100%;
+  }
+}
