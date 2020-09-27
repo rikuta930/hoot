@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/detail.css" />
   </head>
   <body>
-    <div class="global-container">
+    <div class="global-container popup__shadow">
       <header class="header">
         <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo" />
         <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
@@ -16,8 +16,12 @@
       </header>
       <div class="main-container">
         <div class="user-icon">
-          <img src="./icon/bubble_sos.svg" alt="bubble image" class="bubble">
-          <img src="./icon/owl_pink_sitting.svg" alt="owl image" class="sitting-owl">
+          <img src="./icon/bubble_sos.svg" alt="bubble image" class="bubble" />
+          <img
+            src="./icon/owl_pink_sitting.svg"
+            alt="owl image"
+            class="sitting-owl"
+          />
         </div>
         <div class="details">
           <audio src="#" controlslist="nodownload" controls></audio>
@@ -26,17 +30,40 @@
           <div class="btn">
             <button>返事をする</button>
           </div>
-            <div class="my-icon">
-              <img src="./icon/owl_blue_sitting.svg" alt="owl image" class="sitting-owl">
-            </div>
+          <div class="my-icon">
+            <img
+              src="./icon/owl_blue_sitting.svg"
+              alt="owl image"
+              class="sitting-owl"
+            />
+          </div>
         </div>
+        <div class="popup">
+          <h2 class="title">音声を報告</h2>
+          <span class="js-close-btn">X</span>
+          <form action="#" method="POST">
+            <label for="reason">報告の理由をお知らせください。</label>
+            <textarea name="reason"></textarea>
+            <div class="btn-wrapper">
+              <button class="js-submit-btn">報告</button>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="popup">
+          <h2 class="title">音声を報告</h2>
+          <span class="js-close-btn">X</span>
+          <div class="thanks">
+            <p class="message">ご協力ありがとうございます。<br>音声が報告されました。</p>
+          </div>
+        </div> -->
       </div>
       <button class="back-btn" onclick="history.back()">
         <img src="./icon/arrow.png" alt="arrow image" />
       </button>
       <div class="report">
-        <a href="#">音声を報告する</a>
+        <span class="js-report-btn">音声を報告する</span>
       </div>
     </div>
+    <script src="./recup/js/popup.js"></script>
   </body>
 </html>
