@@ -39,8 +39,10 @@ if (!empty($_POST)) {
         <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
         <!-- <a href="#" class="header__signout">ログアウト</a> -->
     </header>
+    <div class="main-logo">
+        <img src="./icon/hoot_main_logo.svg" alt="logo image">
+    </div>
     <div class="main-container">
-        <h1 class="title">ログイン</h1>
         <form class="form" method="post" action="signin.php">
             <label for="mail" class="form__title">メールアドレス</label>
             <input id="mail" type="email" class="form__info" name="email" required><br>

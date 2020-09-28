@@ -17,6 +17,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
 
     $hashtags = $dbh->prepare('SELECT * FROM hoot_hashtag WHERE id=?');
+
+    $delete_table = $dbh->prepare('DELETE FROM hoot_sound WHERE ?::text < CURRENT_TIMESTAMP(0)::text;');
 } else {
     header('Location: signin.php');
     exit();
@@ -25,80 +27,81 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Page</title>
-  <link rel="stylesheet" href="./css/reboot.min.css">
-  <link rel="stylesheet" href="./css/mypage.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="./css/reboot.min.css">
+    <link rel="stylesheet" href="./css/mypage.css">
 </head>
 <body>
-  <div class="global-container">
+<div class="global-container">
     <header class="header">
-      <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
-      <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
-      <a href="logout.php" class="header__signout">ログアウト</a>
+        <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo">
+        <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
+        <a href="logout.php" class="header__signout">ログアウト</a>
     </header>
-    <div class="main-container">
-      <div class="profile">
-        <div class="profile__left">
-          <div class="profile__icon">
-            <img src="./icon/<?php print($member['picture']);?>.svg" alt="icon img">
-          </div>
-          <div class="profile__follow-and-follower">
-            <div>
-<!--              <span class="label">フォロー</span>-->
-<!--              <span class="number">10</span>-->
-            </div>
-            <div>
-<!--              <span class="label">フォロワー</span>-->
-<!--              <span class="number">10</span>-->
-            </div>
-          </div>
-        </div>
-        <div class="profile__right">
-          <h4 class="profile__name"><?php print($member['name']);?></h4>
-          <p class="profile__id">id:<?php print($member['id']);?></p>
-<!--          <p class="profile__introduction">こんにちは。ここには自己紹介が表示されます。よろしくね！</p>-->
-          <button class="profile__btn" onclick="location.href='edit-profile.php'">プロフィール編集</button>
-        </div>
-      </div>
-      <ul class="list">
-          <?php foreach ($data as $datum):?>
-          <?php
-              $hashtags->execute(array(
-                  $datum['hoot_hashtag_id'],
-              ));
-              $hashtag = $hashtags->fetch(PDO::FETCH_ASSOC);
-          ?>
-        <li class="list-item">
-          <div class="list-item__icon">
-<!--            <img src="./icon/--><?php //print($member['picture']);?><!--" alt="icon img">-->
-          </div>
-          <div class="list-item__info">
-            <h2 class="list-item__name">
-            <?php print($member['name']); ?>
-            </h2>
-            <audio src="./recup/data/<?php echo $datum['name'];?>" controls></audio>
-            <span class="list-item__tag">#<?php echo $hashtag['gender']?> </span>
-            <span class="list-item__tag"><?php echo $hashtag['freeword'] ?></span>
-<!--            <div class="list-item__heard">-->
-<!--              <span class="list-item__number">17</span>-->
-<!--              <img src="./icon/ear_black.png" alt="ear img">-->
-<!--            </div>-->
-          </div>
-        </li>
-          <?php endforeach; ?>
-      </ul>
+    <div class="page-title">
+        <h2>マイページ</h2>
+        <button onclick="location.href='edit-profile.php'">編集</button>
     </div>
-    <!-- <button class="menu-left" onclick="location.href='mypage.html'">
-      <img class="home" src="./icon/home.png" alt="home img">
-    </button> -->
+    <div class="user-icon">
+        <img src="./icon/<?php echo $member['picture'];?>_sitting.svg" alt="icon img">
+    </div>
+    <div class="main-container">
+        <ul class="list">
+            <?php foreach($data as $datum):?>
+            <?php
+                $timestamp = strtotime('+1 day ' . $datum['time']);
+                $time = date("Y-m-d H:i:s", $timestamp);
+
+                $delete_table->execute(array(
+                    $time,
+                )) ?>
+            <li class="list-item">
+                <div class="list-item__info">
+                    <div class="list-item__upper">
+                        <div class="bubble">
+                            <img src="./icon/bubble_<?php
+                            $hashtags->execute(array(
+                                $datum['hoot_hashtag_id'],
+                            ));
+                            $category = $hashtags->fetch();
+                            print($category['category'])
+                            ?>.svg" alt="bubble image" class="bubble">
+                        </div>
+                        <div class="time">1時間前</div>
+                    </div>
+                    <audio src="./recup/data/<?php echo $datum['name']; ?>" controlslist="nodownload" controls></audio>
+                    <div class="list-item__bottom">
+                        <?php if ($datum['listen']==0):?>
+                        <img src="./icon/ear_not_heard.svg" alt="ear image">
+                        <?php else:?>
+                        <img src="./icon/ear_heard.svg" alt="ear image">
+                        <?php endif;?>
+                        <?php
+                        $res_data = $dbh->prepare('SELECT * FROM hoot_sound WHERE res_id=?');
+                        $res_data->execute(array(
+                           $datum['id']
+                        ));
+                        $res_datum = $res_data->fetch();
+                        if ($res_datum):?>
+                            <a href="detail.php?hoot_sound_id=<?php print($res_datum['id']);?>&user_id=<?php print($res_datum['user_id']);?>"><img src="./icon/comment_sent.svg" alt=""></a>
+                        <?php else :?>
+                            <img src="./icon/comment_not_sent.svg" alt="">
+                        <?php endif;?>
+                        <a href="delete.php?id=<?php echo $datum['id'];?>"><img class="trash" src="./icon/trash.png" alt="trash image"></a>
+                    </div>
+                </div>
+            </li>
+            <?php endforeach;?>
+        </ul>
+    </div>
     <button class="menu-left" onclick="location.href='index.php'">
-      <img class="timeline" src="./icon/timeline.png" alt="timeline img">
+        <img class="timeline" src="./icon/timeline.png" alt="timeline img">
     </button>
     <button class="menu-right" onclick="location.href='record.php'">
-      <img class="mic" src="./icon/mic.png" alt="mic img">
+        <img class="mic" src="./icon/mic.png" alt="mic img">
     </button>
-  </div>
+</div>
 </body>
 </html>

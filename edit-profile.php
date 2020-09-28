@@ -56,19 +56,18 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         </div>
         <form class="form" method="post">
             <label for="owl-color" class="form__title">アイコンカラー</label>
-            <select name="owl_color" class="form__info">
-                <option value=""></option>
-                <option value="owl_blue">ブルー</option>
+            <select name="owl_color" class="form__info" required>
+                <option value="owl_blue" selected>ブルー</option>
                 <option value="owl_pink">ピンク</option>
                 <option value="owl_orange">オレンジ</option>
                 <option value="owl_green">グリーン</option>
             </select><br>
             <label for="mail" class="form__title">メールアドレス</label>
-            <input id="mail" type="email" class="form__info" name="email"><br>
+            <input id="mail" type="email" class="form__info" name="email" value="<?php print($member['email']);?>" required><br>
             <label for="pw" class="form__title">パスワード</label>
-            <input id="pw" type="password" class="form__info" name="password"><br>
+            <input id="pw" type="password" class="form__info" name="password" required><br>
             <label for="re-pw" class="form__title">パスワード(確認用)</label>
-            <input id="re-pw" type="password" class="form__info" name="password2"><br>
+            <input id="re-pw" type="password" class="form__info" name="password2" required><br>
             <div class="form__btn-wrapper">
                 <button class="form__btn" type="submit">変更</button>
             </div>
