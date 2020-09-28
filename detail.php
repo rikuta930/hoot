@@ -63,17 +63,33 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
         <!-- <a href="#" class="header__signout">ログアウト</a> -->
     </header>
     <div class="main-container">
-        <div class="user-icon">
-            <img src="./icon/bubble_sos.svg" alt="bubble image" class="bubble">
-            <img src="./icon/<?php print($member['picture']);?>_sitting.svg" alt="owl image" class="sitting-owl">
-        </div>
-        <div class="details">
-            <audio src="recup/data/<?php print($filename);?>" controlslist="nodownload" controls></audio>
-        </div>
+        <?php if (isset($filename)):?>
+            <div class="user-icon">
+                <img src="./icon/bubble_<?php print($hashtag_data['category']);?>.svg" alt="bubble image" class="bubble">
+                <img src="./icon/<?php print($member['picture']);?>_sitting.svg" alt="owl image" class="sitting-owl">
+            </div>
+            <div class="details">
+                    <audio src="recup/data/<?php print($filename);?>" controlslist="nodownload" controls></audio>
+            </div>
+            <div class="response">
+                <div class="btn">
+                    <button onclick="location.href='./record.php?res_id=<?php print($data['id']);?>'">返事をする</button>
+                </div>
+            </div>
+        <?php else:?>
+            <div class="user-icon">
+<!--                <img src="./icon/bubble_hoot.svg" alt="bubble image" class="bubble">-->
+                <img src="./icon/hoot_main_logo.svg" alt="owl image" class="sitting-owl">
+            </div>
+            <p style="text-align: center;">既にこのフクロウは飛び去りました｡</p>
+        <?php endif;?>
     </div>
     <button class="back-btn" onclick="location.href='index.php'">
         <img src="./icon/arrow.png" alt="arrow image" />
     </button>
+    <div class="report">
+        <a href="report.php">音声を報告する</a>
+    </div>
 </div>
 </body>
 </html>

@@ -3,6 +3,15 @@ session_start();
 require 'pdo_connect.php';
 if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $_SESSION['time'] = time();
+
+    #URLがhttpsじゃなかったらリダイレクトする｡
+    
+    $members = $dbh->prepare('SELECT * FROM hoot_user WHERE id=?');
+    $members->execute(array(
+        $_SESSION['id']
+    ));
+    $member = $members->fetch();
+
     if (!empty($_POST)) {
         if (empty($error)) {
             $hashtag_id = "";
@@ -10,12 +19,10 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
                 $hashtag_id .= mt_rand(0, 9);
             }
 
-            $hashtag = $dbh->prepare('INSERT INTO hoot_hashtag (id, generation, gender, freeword) VALUES(?,?,?,?)');
+            $hashtag = $dbh->prepare('INSERT INTO hoot_hashtag (id, category) VALUES(?,?)');
             $hashtag->execute(array(
                 $hashtag_id,
-                $_POST['generation'],
-                $_POST['gender'],
-                $_POST['freeword'],
+                $_POST['category'],
             ));
 
             $sound = $dbh->prepare('UPDATE hoot_sound SET hoot_hashtag_id = ? WHERE user_id=? AND hoot_hashtag_id is null;');
@@ -49,57 +56,55 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 <div class="global-container">
     <header class="header">
         <img src="./icon/hoot_logo.svg" alt="hoot img" class="header__logo"/>
+        <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
+        <!-- <a href="signin.html" class="header__signout">ログアウト</a> -->
     </header>
+    <div class="user-icon">
+        <img src="./icon/bubble_hoot.svg" alt="bubble image" class="bubble">
+        <img src="./icon/<?php echo $member['picture']?>_sitting.svg" alt="owl image" class="sitting-owl">
+    </div>
     <div class="main-container">
-        <h2 class="page-title">つぶやき</h2>
         <div class="record">
             <div class="record__btn">
                 <button class="record__start" onclick="startRecording(this);">録音</button>
                 <button class="record__stop" onclick="stopRecording(this);" disabled>停止</button>
             </div>
+            <ul id="recordingslist"></ul>
         </div>
-        <ul id="recordingslist" style="list-style-type: none; margin: 0 auto;"></ul>
-        <h2 class="page-title">ハッシュタグ</h2>
-        <form action="record.php" method="post">
-            <label for="generation" class="form__title">年代</label>
-            <select name="generation" class="form__info" required>
-                <option value=""></option>
-                <option value="10">10代</option>
-                <option value="20">20代</option>
-                <option value="30">30代</option>
-                <option value="40">40代</option>
-                <option value="50">50代</option>
-                <option value="60">60代</option>
-                <option value="70">70代</option>
-                <option value="80">80代</option>
-                <option value="90">90代</option>
-            </select><br>
-            <label for="gender" class="form__title">性別</label>
-            <select name="gender" class="form__info" required>
-                <option value=""></option>
-                <option value="boy">男性</option>
-                <option value="girl">女性</option>
-                <option value="others">その他</option>
-                <option value="secret">無回答</option>
-            </select><br>
-            <label for="freeword" class="form__title">フリーワード</label>
-            <textarea name="freeword" class="form__info" placeholder="#嬉しい" required></textarea>
-
-            <?php if ($error['empty'] === 'empty') : ?>
-                <p>録音停止後､すべての空欄を埋めてください｡</p>
-            <?php endif; ?>
-
-            <div class="form__btn-wrapper">
-                <button class="form__btn" type="submit">公開</button>
-            </div>
-        </form>
+        <?php if (empty($_GET)):?>
+            <form action="" class="form" method="post">
+                <select name="category" class="form__info" required>
+                    <option value="myself" selected>独り言</option>
+                    <option value="consult">相談</option>
+                    <option value="song">song</option>
+                    <option value="sos">SOS</option>
+                    <option value="others">その他</option>
+                </select><br>
+                <div class="form__btn-wrapper">
+                    <button class="form__btn" type="submit">飛ばす</button>
+                </div>
+                <button class="back-btn" onclick="location.href='index.php'" type="submit">
+                    <img src="./icon/arrow.png" alt="arrow image">
+                </button>
+            </form>
+        <?php else:?>
+            <form action="response.php" class="form" method="post">
+                <div class="form__btn-wrapper">
+                    <input type="hidden" value="reply" name="category">
+                    <input type="hidden" value="<?php print($_GET['res_id']);?>" name="res_id">
+                    <input type="hidden" value="1" name="res">
+                    <button class="form__btn" type="submit">飛ばす</button>
+                </div>
+            </form>
+        <?php endif;?>
+        <button class="back-btn" onclick="location.href='index.php'">
+            <img src="./icon/arrow.png" alt="arrow image">
+        </button>
     </div>
-    <button class="back-btn" onclick="history.back()">
-        <img src="./icon/arrow.png" alt="arrow image">
-    </button>
+    <div style="color:rgb(247,247,247);">
+        <pre id="log"></pre>
+    </div>
 </div>
-<h2>Log</h2>
-<pre id="log"></pre>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     function __log(e, data) {

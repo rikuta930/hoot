@@ -40,21 +40,11 @@ if (!empty($_POST)) {
         <!-- <img src="./icon/search.png" alt="search img" class="header__search"> -->
         <!-- <a href="#" class="header__signout">ログアウト</a> -->
     </header>
+    <div class="main-logo">
+        <img src="./icon/hoot_main_logo.svg" alt="logo image">
+    </div>
     <div class="main-container">
-        <h1 class="title">新規登録</h1>
         <form class="form" method="post" action="signup.php">
-<!--            <label for="name" class="form__title">ユーザー名</label>-->
-<!--            <input id="name" type="text" class="form__info" name="name"><br>-->
-<!--            <label for="gender" class="form__title">性別</label>-->
-<!---->
-<!--            <select name="gender" class="form__info">-->
-<!--                <option value=""></option>-->
-<!--                <option value="boy">男性</option>-->
-<!--                <option value="girl">女性</option>-->
-<!--                <option value="others">その他</option>-->
-<!--                <option value="secret">無回答</option>-->
-<!--            </select><br>-->
-
             <label for="email" class="form__title">メールアドレス</label>
             <input id="email" type="email" class="form__info" name="email"><br>
             <?php if ($error['email'] === 'duplicate') : ?>
