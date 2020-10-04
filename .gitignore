@@ -5,3 +5,4 @@ css/
 dist/
 .idea/
 .vscode/
+test_*
